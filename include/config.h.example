@@ -1,0 +1,48 @@
+#pragma once
+#include <Arduino.h>
+
+// =============================================================================
+// TRMNL 7.5" DIY E-Paper Dashboard — User Configuration Template
+// Copy this file to "config.h" and adjust your Wi-Fi & settings.
+// DO NOT commit "config.h" containing your private credentials to GitHub!
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// 1. Wi-Fi Configuration & Live Stream Endpoint
+// -----------------------------------------------------------------------------
+#define WIFI_SSID           "YOUR_WIFI_SSID"        // 2.4GHz Wi-Fi SSID
+#define WIFI_PASSWORD       "YOUR_WIFI_PASSWORD"    // Wi-Fi Password
+#define WIFI_TIMEOUT_MS     15000                   // Max connection timeout (15s)
+
+// Streaming Source:
+// Option 1 (GitHub Actions / Cloud CDN - Serverless & Free):
+//   "https://raw.githubusercontent.com/<YOUR_GITHUB_USER>/<YOUR_REPO>/main"
+#define STREAM_BASE_URL     "https://raw.githubusercontent.com/YOUR_GITHUB_USER/xiao-epaper-dashboard-template/main"
+
+// GitHub Token:
+// - Leave EMPTY ("") if your repository is PUBLIC (recommended for zero friction)
+// - If your repository is PRIVATE, generate a Personal Access Token (classic) with "repo" scope
+#define GITHUB_TOKEN        ""
+
+// -----------------------------------------------------------------------------
+// 2. Fallback Location & Weather (Open-Meteo API - Free, Keyless)
+// -----------------------------------------------------------------------------
+// Used if the device falls back to on-device rendering without cloud streaming
+#define WEATHER_CITY_NAME   "San Francisco"
+#define WEATHER_LATITUDE    37.7749f
+#define WEATHER_LONGITUDE   -122.4194f
+#define WEATHER_USE_CELSIUS false                   // true for Celsius, false for Fahrenheit
+
+// -----------------------------------------------------------------------------
+// 3. Time & Timezone Configuration (NTP)
+// -----------------------------------------------------------------------------
+#define NTP_SERVER_1        "pool.ntp.org"
+#define NTP_SERVER_2        "time.google.com"
+#define GMT_OFFSET_SEC      (-8 * 3600)             // GMT offset in seconds (e.g. PST: -8*3600, EST: -5*3600, ICT/Bangkok: +7*3600)
+#define DAYLIGHT_OFFSET_SEC 3600                    // Daylight saving offset in seconds (e.g. 3600 if active, 0 if not)
+
+// -----------------------------------------------------------------------------
+// 4. Power & Sleep Management
+// -----------------------------------------------------------------------------
+#define SLEEP_DURATION_MINUTES 30                   // Auto-refresh interval (15, 30, or 60 min)
+#define ENABLE_DEEP_SLEEP      true                 // Enables deep sleep between cycles when on battery

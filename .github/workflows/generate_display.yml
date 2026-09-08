@@ -1,0 +1,52 @@
+name: Generate E-Ink Display
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # Runs every 30 minutes in the cloud
+  workflow_dispatch:        # Manual "Run workflow" button
+  push:
+    branches: [ main ]
+    paths:
+      - 'generate_cloud_display.py'
+      - 'custom_data.json'
+      - 'fonts/**'
+      - '.github/workflows/generate_display.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pillow
+
+      - name: Render E-Ink Bitmaps
+        env:
+          WEATHER_LAT: "13.7563"
+          WEATHER_LON: "100.5018"
+          TIMEZONE: "Asia/Bangkok"
+          LOCATION_NAME: "BANGKOK"
+          ANNIVERSARY_START_DATE: "2023-08-16"
+        run: |
+          python generate_cloud_display.py
+
+      - name: Commit and Push Updated Display Files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add page1.bin page2.bin page1.png page2.png page1.bmp page2.bmp
+          git commit -m "Auto-refresh E-Ink Display [skip ci]" || exit 0
+          git push

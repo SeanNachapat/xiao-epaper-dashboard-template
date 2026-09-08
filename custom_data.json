@@ -1,0 +1,51 @@
+{
+  "location_name": "SAN FRANCISCO",
+  "latitude": 37.7749,
+  "longitude": -122.4194,
+  "timezone": "America/Los_Angeles",
+
+  "anniversary_start": "2023-08-16",
+  "anniversary_subtitle": "MILESTONE TRACKER",
+
+  "agenda_items": [
+    {
+      "tag": "[1]",
+      "title": "Design Review:",
+      "desc1": "Typography guidelines for series EPD-800,",
+      "desc2": "Review with Hardware Team."
+    },
+    {
+      "tag": "[2]",
+      "title": "Quarterly Planning:",
+      "desc1": "Roadmap sync at 14:00 in Room 4A,",
+      "desc2": "Prepare Q4 deliverables."
+    }
+  ],
+
+  "portfolio": {
+    "net_worth": 148920.0,
+    "day_change": 2084.10,
+    "day_change_pct": 1.42,
+    "high_7d": 151200.0,
+    "low_7d": 142100.0,
+    "sparkline": [142500, 144200, 143800, 147100, 146800, 148200, 148920],
+    "tickers": [
+      { "symbol": "BTC", "price": 64230.50, "delta_pct": 3.42 },
+      { "symbol": "ETH", "price": 3485.20, "delta_pct": -1.15 },
+      { "symbol": "VOO", "price": 498.60, "delta_pct": 0.85 }
+    ]
+  },
+
+  "ai_telemetry": [
+    ["ANTIGRAVITY AI", "148K / 200K TOKENS", 0.74],
+    ["OPENAI GPT-4O", "84K / 150K TOKENS", 0.56],
+    ["CLAUDE 3.5 SONNET", "112K / 150K TOKENS", 0.75]
+  ],
+
+  "infra_cards": [
+    ["PROXMOX VE", "CPU 18% • 64GB RAM", "HEALTHY"],
+    ["NAS STORAGE POOL", "14.2TB / 24TB (59%)", "ONLINE"],
+    ["KUBERNETES CLUSTER", "3 NODES • 28 PODS", "HEALTHY"],
+    ["POSTGRES PRIMARY", "CONN: 42 • QPS: 120", "OPTIMAL"]
+  ]
+}
