@@ -9,6 +9,7 @@ on:
     paths:
       - 'generate_cloud_display.py'
       - 'custom_data.json'
+      - 'requirements.txt'
       - 'fonts/**'
       - '.github/workflows/generate_display.yml'
 
@@ -31,15 +32,9 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install --upgrade pip
-          pip install pillow
+          pip install -r requirements.txt
 
       - name: Render E-Ink Bitmaps
-        env:
-          WEATHER_LAT: "13.7563"
-          WEATHER_LON: "100.5018"
-          TIMEZONE: "Asia/Bangkok"
-          LOCATION_NAME: "BANGKOK"
-          ANNIVERSARY_START_DATE: "2023-08-16"
         run: |
           python generate_cloud_display.py
 
